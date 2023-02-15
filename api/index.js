@@ -1,7 +1,15 @@
 const app = require('express')();
+const MongoDb = require('../lib/mongodb');
+const mongodb = new MongoDb();
 const PORT = 8080;
-app.get('/api', (req, res) => {
-  res.end(`Hello! Go to item:`);
+app.get('/api/restaurant', async (req, res) => {
+  const restaurants = await mongodb.getRestaurants();
+  res.send({
+    code: 200,
+    data: {
+      restaurants,
+    },
+  });
 });
 
 app.get('/api/item/:slug', (req, res) => {
