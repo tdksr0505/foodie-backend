@@ -104,7 +104,12 @@ app.post('/api/login', async (req, res) => {
     const token = createToken({ account: result.account });
     res.status(200).json({
       code: 0,
-      data: { account: result.account, token, msg: '登入成功' },
+      data: {
+        account: result.account,
+        name: result.name,
+        token,
+        msg: '登入成功',
+      },
     });
   } else {
     res.status(200).json({
