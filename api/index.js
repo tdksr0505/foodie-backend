@@ -105,7 +105,7 @@ app.post('/api/login', async (req, res) => {
     res.status(200).json({
       code: 0,
       data: {
-        id: result.id,
+        id: result._id,
         account: result.account,
         name: result.name,
         msg: '登入成功',
